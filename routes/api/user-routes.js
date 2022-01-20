@@ -56,6 +56,7 @@ router.put('/:id', (req, res) => {
 
     //if req.body has exact key/value pairs to match the model, you can just 
     User.update(req.body, {
+        individualHooks: true,
         where: {
             id: req.params.id
         }
@@ -67,7 +68,7 @@ router.put('/:id', (req, res) => {
     }
     res.json(dbUserData);
     })
-    .catch(er => {
+    .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
